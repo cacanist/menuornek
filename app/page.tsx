@@ -1,65 +1,110 @@
-import Image from "next/image";
+import Image from 'next/image';
+import menuData from '@/data/menu.json';
+import MenuCard from '@/components/MenuCard';
+import { MenuData } from '@/types/menu';
+import { ArrowDown } from 'lucide-react';
+
+const data = menuData as unknown as MenuData;
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <main className="min-h-screen bg-white h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth">
+      {/* Hero Section */}
+      <section className="relative w-full h-screen flex items-center justify-center px-4 snap-start shrink-0 overflow-hidden">
+        {/* Background Pattern - Pasta/Makarna Inspired */}
+        <div 
+          className="absolute inset-0 opacity-[0.02] pointer-events-none"
+          style={{
+            backgroundImage: `radial-gradient(circle, #9ca3af 1px, transparent 1px)`,
+            backgroundSize: '60px 60px',
+            backgroundPosition: '0 0, 30px 30px'
+          }}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+        
+        {/* Decorative Circle Blur */}
+        <div className="absolute top-1/4 -left-20 w-72 h-72 bg-orange-100 rounded-full blur-[100px] opacity-60" />
+        <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-green-50 rounded-full blur-[100px] opacity-60" />
+
+        <div className="relative flex flex-col items-center justify-center text-center max-w-2xl mx-auto z-10">
+          
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-gray-900 font-serif leading-tight">
+            {data.restaurantInfo.name}
+            <span className="text-orange-500">.</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          
+          <div className="w-16 h-1 bg-orange-500 mb-8 rounded-full opacity-80"></div>
+
+          <p className="text-lg md:text-2xl text-gray-600 font-light font-sans tracking-wide leading-relaxed max-w-lg mb-10">
+            {data.restaurantInfo.slogan}
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          
+          <a 
+            href="#makarna" 
+            className="group flex flex-col items-center gap-2 text-sm text-gray-400 font-medium tracking-widest uppercase hover:text-orange-500 transition-colors duration-300"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
+            Menüyü Keşfet
+            <ArrowDown size={20} className="animate-bounce mt-2 text-orange-500" />
           </a>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Sticky Navigation - Glassmorphism */}
+      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 py-4 shadow-sm snap-start">
+        <div className="flex gap-3 px-4 overflow-x-auto no-scrollbar max-w-7xl mx-auto md:justify-center">
+          {data.categories.map((cat) => (
+            <a
+              key={cat.id}
+              href={`#${cat.id}`}
+              className="px-6 py-2.5 rounded-full bg-gray-50 border border-gray-200 text-gray-600 font-medium text-sm whitespace-nowrap shadow-sm hover:shadow-md active:scale-95 transition-all hover:border-orange-400 hover:text-orange-400 focus:ring-2 focus:ring-orange-400/20 scroll-smooth font-serif tracking-wide"
+            >
+              {cat.name}
+            </a>
+          ))}
+        </div>
+      </nav>
+
+      {/* Menu Sections */}
+      <div className="max-w-[1280px] mx-auto px-4 py-10 space-y-32 pb-32">
+        {data.categories.map((category) => (
+          <section key={category.id} id={category.id} className="scroll-mt-28 min-h-[50vh] snap-start">
+            {/* Main Category Title */}
+            <div className="flex items-center gap-4 mb-12">
+              <h1 className="text-4xl font-bold text-gray-900 font-serif italic">
+                {category.name}
+              </h1>
+              <div className="h-px bg-gray-300 flex-1"></div>
+            </div>
+            
+            {/* Subcategories or Direct Items */}
+            {category.subcategories ? (
+              <div className="space-y-20">
+                {category.subcategories.map((subcat) => (
+                  <div key={subcat.id} id={subcat.id}>
+                    {/* Subcategory Title */}
+                    <h2 className="text-3xl font-bold text-gray-800 font-serif mb-8">
+                      {subcat.name}
+                    </h2>
+                    
+                    {/* Items */}
+                    <div className="flex flex-col gap-3">
+                      {subcat.items.map((item, index) => (
+                        <MenuCard key={item.id} item={item} index={index} />
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              /* Direct Items (no subcategories) */
+              <div className="flex flex-col gap-3">
+                {category.items?.map((item, index) => (
+                  <MenuCard key={item.id} item={item} index={index} />
+                ))}
+              </div>
+            )}
+          </section>
+        ))}
+      </div>
+    </main>
   );
 }

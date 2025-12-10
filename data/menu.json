@@ -1,0 +1,95 @@
+{
+  "restaurantInfo": {
+    "name": "Pasta Artisan",
+    "slogan": "El yapımı makarna sanatı",
+    "heroImage": "https://images.unsplash.com/photo-1551183053-bf91b1d545ce?q=80&w=1000&auto=format&fit=crop"
+  },
+  "categories": [
+    {
+      "id": "makarna",
+      "name": "Makarna",
+      "subcategories": [
+        {
+          "id": "dolgulu",
+          "name": "Dolgulu Hamurlar",
+          "items": [
+            {
+              "id": "ravioli-ricotta",
+              "name": "Ravioli Ricotta & Ispanak",
+              "description": "Taze ricotta peyniri, organik ıspanak, adaçayı tereyağı sosu ile.",
+              "price": "340 ₺",
+              "image": "/ispanak.png",
+              "tags": ["Vejetaryen"]
+            },
+            {
+              "id": "tortellini-fungi",
+              "name": "Tortellini Porcini",
+              "description": "Yaban mantarları dolgusu, trüf aromalı krema sos.",
+              "price": "380 ₺",
+              "image": "/Tortellini Porcini.png",
+              "tags": ["Şefin Seçimi"]
+            },
+            {
+              "id": "agnolotti-beef",
+              "name": "Agnolotti al Plin",
+              "description": "Ağır ateşte pişmiş dana eti dolgusu, et suyu glazür.",
+              "price": "420 ₺",
+              "image": "/Agnolotti al Plin.png"
+            }
+          ]
+        },
+        {
+          "id": "uzun",
+          "name": "Uzun Makarnalar",
+          "items": [
+            {
+              "id": "tagliatelle-bolognese",
+              "name": "Tagliatelle Bolognese",
+              "description": "12 saat kısık ateşte pişmiş geleneksel dana ragu.",
+              "price": "360 ₺",
+              "image": "/Gemini_Generated_Image_ivmie1ivmie1ivmi.png"
+            },
+            {
+              "id": "pappardelle-duck",
+              "name": "Pappardelle Ördek Ragu",
+              "description": "Tiftiklenmiş konfit ördek but, portakal kabuğu rendesi.",
+              "price": "410 ₺",
+              "image": "/Gemini_Generated_Image_ivmie1ivmie1ivmi.png",
+              "tags": ["Yeni"]
+            },
+            {
+              "id": "fettuccine-alfredo",
+              "name": "Fettuccine Alfredo",
+              "description": "Parmigiano Reggiano ve tereyağı emülsiyonu.",
+              "price": "320 ₺",
+              "image": "/Gemini_Generated_Image_22242s22242s2224.png",
+              "tags": ["Vejetaryen"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "baslangic",
+      "name": "Başlangıçlar",
+      "items": [
+        {
+          "id": "burrata",
+          "name": "Burrata & Domates",
+          "description": "Renkli heirloom domatesler, fesleğen pesto, sızma zeytinyağı.",
+          "price": "290 ₺",
+          "image": "/Gemini_Generated_Image_7zmbev7zmbev7zmb.png",
+          "tags": ["Vejetaryen"]
+        },
+        {
+          "id": "rustic-garden-salad",
+          "name": "Rustic Garden Salad",
+          "description": "Taze roka, heirloom domatesler, salatalık, kalamata zeytin, feta peyniri ve çam fıstığı ile.",
+          "price": "180 ₺",
+          "image": "/Gemini_Generated_Image_jov8qfjov8qfjov8.png",
+          "tags": ["Vejetaryen"]
+        }
+      ]
+    }
+  ]
+}
