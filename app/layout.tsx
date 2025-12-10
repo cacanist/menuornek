@@ -1,25 +1,24 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
+import { Montserrat, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
 });
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Atölye Hamur | El Yapımı Makarna",
+  title: "Pasta Artisan | El Yapımı Makarna Sanatı",
   description: "El yapımı makarna sanatı. Taze ve doğal malzemelerle hazırlanan lezzetler.",
 };
 
@@ -31,7 +30,8 @@ export default function RootLayout({
   return (
     <html lang="tr" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased bg-cream text-charcoal`}
+        className={`${montserrat.variable} ${playfair.variable} antialiased`}
+        style={{ backgroundColor: 'var(--background)', color: 'var(--foreground)' }}
       >
         {children}
       </body>

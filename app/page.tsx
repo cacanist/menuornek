@@ -2,64 +2,88 @@ import Image from 'next/image';
 import menuData from '@/data/menu.json';
 import MenuCard from '@/components/MenuCard';
 import { MenuData } from '@/types/menu';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, Wheat, Salad, Cake } from 'lucide-react';
 
 const data = menuData as unknown as MenuData;
 
+// Category icon mapping
+const getCategoryIcon = (categoryId: string) => {
+  const icons = {
+    makarna: Wheat,
+    baslangic: Salad,
+    tatlilar: Cake,
+  };
+  return icons[categoryId as keyof typeof icons] || Wheat;
+};
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth">
+    <main className="min-h-screen h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth" style={{ backgroundColor: '#F4F1EA' }}>
       {/* Hero Section */}
-      <section className="relative w-full h-screen flex items-center justify-center px-4 snap-start shrink-0 overflow-hidden">
-        {/* Background Pattern - Pasta/Makarna Inspired */}
+      <section className="relative w-full h-screen flex items-center justify-center px-4 snap-start shrink-0 overflow-hidden" style={{ backgroundColor: '#F4F1EA' }}>
+        {/* Background Pattern - Dots */}
         <div 
-          className="absolute inset-0 opacity-[0.02] pointer-events-none"
+          className="absolute inset-0 opacity-[0.03] pointer-events-none"
           style={{
-            backgroundImage: `radial-gradient(circle, #9ca3af 1px, transparent 1px)`,
-            backgroundSize: '60px 60px',
-            backgroundPosition: '0 0, 30px 30px'
+            backgroundImage: `radial-gradient(circle, #133328 1.5px, transparent 1.5px)`,
+            backgroundSize: '50px 50px',
+            backgroundPosition: '0 0, 25px 25px'
           }}
         />
         
-        {/* Decorative Circle Blur */}
-        <div className="absolute top-1/4 -left-20 w-72 h-72 bg-orange-100 rounded-full blur-[100px] opacity-60" />
-        <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-green-50 rounded-full blur-[100px] opacity-60" />
+        {/* Text Pattern - Restaurant Name */}
+        <div 
+          className="absolute inset-0 opacity-[0.04] pointer-events-none animate-pattern-slide"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='150' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='50%25' y='50%25' font-family='serif' font-size='35' font-weight='bold' fill='%23133328' text-anchor='middle' dominant-baseline='central'%3E${encodeURIComponent(data.restaurantInfo.name)}%3C/text%3E%3C/svg%3E")`,
+            backgroundSize: '120px 60px',
+            backgroundRepeat: 'repeat'
+          }}
+        />
 
-        <div className="relative flex flex-col items-center justify-center text-center max-w-2xl mx-auto z-10">
+        <div className="relative flex flex-col items-center justify-center text-center max-w-3xl mx-auto z-10">
           
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-gray-900 font-serif leading-tight">
+          {/* Main Title */}
+          <h1 className="text-6xl md:text-8xl font-bold tracking-tight font-serif leading-tight mb-8" style={{ color: '#133328' }}>
             {data.restaurantInfo.name}
-            <span className="text-orange-500">.</span>
+            <span style={{ color: '#C8A974' }}>.</span>
           </h1>
-          
-          <div className="w-16 h-1 bg-orange-500 mb-8 rounded-full opacity-80"></div>
 
-          <p className="text-lg md:text-2xl text-gray-600 font-light font-sans tracking-wide leading-relaxed max-w-lg mb-10">
+          {/* Slogan with Better Typography */}
+          <p className="text-xl md:text-3xl font-light font-serif tracking-wide leading-relaxed max-w-2xl mb-12 italic" style={{ color: '#133328', opacity: 0.7 }}>
             {data.restaurantInfo.slogan}
           </p>
           
+          {/* CTA Button */}
           <a 
             href="#makarna" 
-            className="group flex flex-col items-center gap-2 text-sm text-gray-400 font-medium tracking-widest uppercase hover:text-orange-500 transition-colors duration-300"
+            className="cta-button flex items-center gap-2 px-6 py-3 font-serif font-medium text-sm"
           >
             Menüyü Keşfet
-            <ArrowDown size={20} className="animate-bounce mt-2 text-orange-500" />
+            <ArrowDown size={16} />
           </a>
         </div>
+
+        {/* Bottom Fade */}
+        <div className="absolute bottom-0 inset-x-0 h-32 pointer-events-none" style={{ background: 'linear-gradient(to top, #F4F1EA, transparent)' }}></div>
       </section>
 
       {/* Sticky Navigation - Glassmorphism */}
-      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 py-4 shadow-sm snap-start">
+      <nav className="sticky top-0 z-50 backdrop-blur-md py-4 shadow-sm snap-start" style={{ backgroundColor: 'rgba(244, 241, 234, 0.95)', borderBottom: '1px solid rgba(200, 169, 116, 0.2)' }}>
         <div className="flex gap-3 px-4 overflow-x-auto no-scrollbar max-w-7xl mx-auto md:justify-center">
-          {data.categories.map((cat) => (
-            <a
-              key={cat.id}
-              href={`#${cat.id}`}
-              className="px-6 py-2.5 rounded-full bg-gray-50 border border-gray-200 text-gray-600 font-medium text-sm whitespace-nowrap shadow-sm hover:shadow-md active:scale-95 transition-all hover:border-orange-400 hover:text-orange-400 focus:ring-2 focus:ring-orange-400/20 scroll-smooth font-serif tracking-wide"
-            >
-              {cat.name}
-            </a>
-          ))}
+          {data.categories.map((cat) => {
+            const Icon = getCategoryIcon(cat.id);
+            return (
+              <a
+                key={cat.id}
+                href={`#${cat.id}`}
+                className="category-pill flex items-center gap-2 px-6 py-2.5 rounded-full bg-white/60 font-medium text-sm whitespace-nowrap shadow-sm hover:shadow-md active:scale-95 scroll-smooth font-serif tracking-wide"
+              >
+                <Icon size={16} strokeWidth={2} />
+                {cat.name}
+              </a>
+            );
+          })}
         </div>
       </nav>
 
@@ -69,10 +93,10 @@ export default function Home() {
           <section key={category.id} id={category.id} className="scroll-mt-28 min-h-[50vh] snap-start">
             {/* Main Category Title */}
             <div className="flex items-center gap-4 mb-12">
-              <h1 className="text-4xl font-bold text-gray-900 font-serif italic">
+              <h1 className="text-4xl font-bold font-serif italic" style={{ color: '#A68B5A' }}>
                 {category.name}
               </h1>
-              <div className="h-px bg-gray-300 flex-1"></div>
+              <div className="h-px flex-1" style={{ backgroundColor: 'rgba(200, 169, 116, 0.3)' }}></div>
             </div>
             
             {/* Subcategories or Direct Items */}
@@ -81,7 +105,7 @@ export default function Home() {
                 {category.subcategories.map((subcat) => (
                   <div key={subcat.id} id={subcat.id}>
                     {/* Subcategory Title */}
-                    <h2 className="text-3xl font-bold text-gray-800 font-serif mb-8">
+                    <h2 className="text-3xl font-bold font-serif mb-8" style={{ color: '#133328' }}>
                       {subcat.name}
                     </h2>
                     

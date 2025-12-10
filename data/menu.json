@@ -15,7 +15,7 @@
           "items": [
             {
               "id": "ravioli-ricotta",
-              "name": "Ravioli Ricotta & Ispanak",
+              "name": "Ravioli Ricotta",
               "description": "Taze ricotta peyniri, organik ıspanak, adaçayı tereyağı sosu ile.",
               "price": "340 ₺",
               "image": "/ispanak.png",
@@ -87,6 +87,74 @@
           "description": "Taze roka, heirloom domatesler, salatalık, kalamata zeytin, feta peyniri ve çam fıstığı ile.",
           "price": "180 ₺",
           "image": "/Gemini_Generated_Image_jov8qfjov8qfjov8.png",
+          "tags": ["Vejetaryen"]
+        },
+        {
+          "id": "bruschetta",
+          "name": "Bruschetta al Pomodoro",
+          "description": "Tostlanmış ekmek üzeri taze domates, sarımsak, fesleğen ve sızma zeytinyağı.",
+          "price": "150 ₺",
+          "image": "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?q=80&w=800&auto=format&fit=crop",
+          "tags": ["Vejetaryen"]
+        },
+        {
+          "id": "caprese",
+          "name": "Caprese",
+          "description": "Taze mozzarella, domates, fesleğen yaprakları, balsamik glazür ve sızma zeytinyağı.",
+          "price": "220 ₺",
+          "image": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?q=80&w=800&auto=format&fit=crop",
+          "tags": ["Vejetaryen"]
+        },
+        {
+          "id": "arancini",
+          "name": "Arancini",
+          "description": "Kızarmış risotto topları, mozzarella ve bezelye dolgusu, marinara sos ile.",
+          "price": "200 ₺",
+          "image": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?q=80&w=800&auto=format&fit=crop",
+          "tags": ["Vejetaryen"]
+        },
+        {
+          "id": "antipasto",
+          "name": "Antipasto Misto",
+          "description": "Prosciutto, salami, peynir çeşitleri, zeytin, kavrulmuş biber ve ekmek.",
+          "price": "350 ₺",
+          "image": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?q=80&w=800&auto=format&fit=crop"
+        }
+      ]
+    },
+    {
+      "id": "tatlilar",
+      "name": "Tatlılar",
+      "items": [
+        {
+          "id": "tiramisu",
+          "name": "Tiramisu",
+          "description": "Geleneksel İtalyan tiramisu, espresso ile ıslatılmış ladyfinger, mascarpone kreması.",
+          "price": "160 ₺",
+          "image": "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?q=80&w=800&auto=format&fit=crop",
+          "tags": ["Şefin Seçimi"]
+        },
+        {
+          "id": "panna-cotta",
+          "name": "Panna Cotta",
+          "description": "Vanilyalı panna cotta, mevsim meyveleri ve bal sosu ile.",
+          "price": "140 ₺",
+          "image": "https://images.unsplash.com/photo-1551024506-0bccd828d307?q=80&w=800&auto=format&fit=crop",
+          "tags": ["Vejetaryen"]
+        },
+        {
+          "id": "cannoli",
+          "name": "Cannoli Siciliani",
+          "description": "Kızarmış hamur tüpü, ricotta dolgusu, çikolata parçacıkları ve fıstık ile.",
+          "price": "120 ₺",
+          "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=800&auto=format&fit=crop"
+        },
+        {
+          "id": "gelato",
+          "name": "Gelato",
+          "description": "Ev yapımı gelato, 3 çeşit seçenek: vanilya, çikolata, limon.",
+          "price": "100 ₺",
+          "image": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=800&auto=format&fit=crop",
           "tags": ["Vejetaryen"]
         }
       ]
